@@ -7,12 +7,14 @@
     <link href="custom-normalize.css" rel="stylesheet">
     <link href="komica-paragraph.css" rel="stylesheet">
 
-    <content select="section"></content>
-
-    </content>
+    <section>
+        <content></content>
+    </section>
   </template>
   <script>
     Polymer('komica-paragraph',{
+      domReady: function() {
+      }
     });
   </script>
 </polymer-element>
