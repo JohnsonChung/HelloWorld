@@ -7,7 +7,7 @@
 
 <link rel="import" href="../komica-paragraph/komica-paragraph.html">
 
-<polymer-element name="komica-comment" attributes="image">
+<polymer-element name="komica-comment" attributes="image model">
   <template>
     <link href="komica-comment.css" rel="stylesheet">
     <div id="post">
@@ -20,11 +20,7 @@
         <section id="content" one flex>
           <core-image id="core-image" sizeing="caption" src="{{image}}"></core-image>
           <komica-paragraph id="p">
-            <section>
-              <content>
-
-              </content>
-            </section>
+              <content></content>
           </komica-paragraph>
         </section>
         <section id="footer">
@@ -44,8 +40,9 @@
       maxHeight: 480,
       postType: 'default',
       adminMode: false,
-      ready: function() {
-
+      domReady: function() {
+        console.log(this.model);
+        this.injectBoundHTML(this.model.CONTENT, this.$.p);
       }
     });
 
