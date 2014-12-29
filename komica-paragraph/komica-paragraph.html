@@ -1,0 +1,18 @@
+<link rel="import" href="/polymer/polymer.html">
+
+<polymer-element name="komica-paragraph">
+  <template>
+    <!-- normalize 現在是沒用的 因為 缺少 ::content selector 對 content 導入的內容的是無效的-->
+    <link href="normalize.css" rel="stylesheet">
+    <link href="custom-normalize.css" rel="stylesheet">
+    <link href="komica-paragraph.css" rel="stylesheet">
+
+    <content select="section"></content>
+
+    </content>
+  </template>
+  <script>
+    Polymer('komica-paragraph',{
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,50 @@
+:host {
+  display: inline-block;
+  box-sizing: border-box;
+}
+:host #core-image /deep/ img {
+  width: 100%;
+}
+
+.item-small {
+  font-size: 12px;
+}
+
+#header {
+  border: 1px solid red;
+}
+#content {
+  border: 1px solid blue;
+}
+#footer {
+  border: 1px solid green;
+  height: 25px;
+}
+
+#p {
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px 20px;
+}
+#core-image {
+  min-width: 45px;
+  max-width: 150px;
+  min-height: 45px;
+  max-height: 150px;
+  margin: 10px;
+  float: left;
+  background-color: rgb(180, 180, 180);
+}
+#post {
+  display: table;
+  margin-bottom: 5px;
+}
+#card {
+  min-width: 25em;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  background-color: rgb(241, 198, 171);
+}
+#checkbox {
+  padding: 0 20px;
+}

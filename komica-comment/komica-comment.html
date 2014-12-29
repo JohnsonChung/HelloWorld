@@ -1,0 +1,53 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/core-icons/core-icons.html">
+<link rel="import" href="/core-item/core-item.html">
+<link rel="import" href="/core-image/core-image.html">
+
+<link rel="import" href="/paper-checkbox/paper-checkbox.html">"
+
+<link rel="import" href="../komica-paragraph/komica-paragraph.html">
+
+<polymer-element name="komica-comment" attributes="image">
+  <template>
+    <link href="komica-comment.css" rel="stylesheet">
+    <div id="post">
+      <div id="card" layout vertical>
+        <section id="header" horizontal layout>
+          <paper-checkbox id="checkbox" horizontal layout center></paper-checkbox>
+          <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center></core-item>
+          <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center></core-item>
+        </section>
+        <section id="content" one flex>
+          <core-image id="core-image" sizeing="caption" src="{{image}}"></core-image>
+          <komica-paragraph id="p">
+            <section>
+              <content>
+
+              </content>
+            </section>
+          </komica-paragraph>
+        </section>
+        <section id="footer">
+          <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center end-justified></core-item>
+        </section>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer('komica-comment',{
+      minWidth: 480,
+      maxWidth: 960,
+      minHeight: 0,
+      maxHeight: 480,
+      postType: 'default',
+      adminMode: false,
+      ready: function() {
+
+      }
+    });
+
+  </script>
+</polymer-element>

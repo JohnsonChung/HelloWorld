@@ -1,0 +1,20 @@
+:host {
+  box-sizing: border-box;
+}
+::content section{
+  color: darkred;
+}
+::content blockquote {
+  color: olivedrab;
+  nothing
+}
+::content blockquote::before {
+  content: '>>';
+}
+::content .post-number {
+  color: dodgerblue;
+  cursor: hand;
+}
+::content .post-number:before {
+  content: '>>';
+}

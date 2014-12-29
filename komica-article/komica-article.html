@@ -1,0 +1,23 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/core-image/core-image.html">
+
+
+<polymer-element name="komica-article">
+  <template>
+    <link href="komica-article.css" rel="stylesheet">
+
+    <komica-post>
+      <content></content>
+    </komica-post>
+    <komica-comment-list>
+      <content></content>
+    </komica-comment-list>
+
+  </template>
+
+  <script>
+    Polymer('komica-article',{
+
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,8 @@
+/* 補足 normalize.css 不足的部分 */
+::content blockquote {
+  margin: 0;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
