@@ -20,7 +20,7 @@
 
     <core-list id="list" data="{{data}}" fit layout horizontal>
       <template>
-        <komica-comment image="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}">{{model.CONTENT | DOMparser}}</komica-comment>
+        <komica-comment image="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}">{{model.CONTENT | toUpperCase}}</komica-comment>
       </template>
     </core-list>
   </template>
@@ -199,6 +199,13 @@
             parser = new DOMParser(),
             doc = parser.parseFromString(xmlString, "text/xml");
         return doc.firstChild // => <div id="foo">...
+      },
+      toUpperCase: function(value) {
+        if(typeof value === 'string') {
+          return value.toUpperCase();
+        } else {
+          return "";
+        }
       },
       data: datas
     });
