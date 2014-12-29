@@ -1,0 +1,9 @@
+{
+  "name": "HelloWorld",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#latest",
+    "core-elements": "Polymer/core-elements#master",
+    "paper-elements": "Polymer/paper-elements#master"
+  }
+}
