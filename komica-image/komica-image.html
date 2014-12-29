@@ -11,6 +11,20 @@
   <script>
 
     Polymer('komica-image',{
+      publish: {
+        imageOnLoad: function() {
+
+        }
+      },
+      ready: function() {
+        var that = this;
+        var imageObserver = new PathObserver(this, 'loading');
+        imageObserver.open(function() {
+          if(that.loading === false) {
+            that.imageOnLoad();
+          }
+        });
+      }
     });
 
   </script>

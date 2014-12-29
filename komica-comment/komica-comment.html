@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../bower_components/core-item/core-item.html">
 <link rel="import" href="../bower_components/core-image/core-image.html">
+<link rel="import" href="../komica-image/komica-image.html">
 
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">"
 
@@ -18,7 +19,7 @@
           <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center></core-item>
         </section>
         <section id="content" one flex>
-          <core-image id="image" sizeing="caption" src="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}" preload></core-image>
+          <komica-image id="image" sizeing="caption" src="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}" imageOnLoad="{{onLoad}}" preload></komica-image>
           <komica-paragraph id="p">
               <content></content>
           </komica-paragraph>
@@ -49,16 +50,6 @@
         this.injectBoundHTML(this.model.CONTENT, this.$.p);
       },
       ready: function() {
-        var that = this;
-
-        //監控core-image讀取狀態
-        var image = this.$.image
-        var imageObserver = new PathObserver(image, 'loading');
-        imageObserver.open(function() {
-          if(image.loading === false) {
-            that.onLoad();
-          }
-        });
       }
     });
 
