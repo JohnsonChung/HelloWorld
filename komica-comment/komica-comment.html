@@ -7,7 +7,7 @@
 
 <link rel="import" href="../komica-paragraph/komica-paragraph.html">
 
-<polymer-element name="komica-comment" attributes="image model">
+<polymer-element name="komica-comment" attributes="model">
   <template>
     <link href="komica-comment.css" rel="stylesheet">
     <div id="post">
@@ -18,7 +18,7 @@
           <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center></core-item>
         </section>
         <section id="content" one flex>
-          <core-image id="core-image" sizeing="caption" src="{{image}}"></core-image>
+          <core-image id="core-image" sizeing="caption" src="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}"></core-image>
           <komica-paragraph id="p">
               <content></content>
           </komica-paragraph>
@@ -41,7 +41,6 @@
       postType: 'default',
       adminMode: false,
       domReady: function() {
-        console.log(this.model);
         this.injectBoundHTML(this.model.CONTENT, this.$.p);
       }
     });
