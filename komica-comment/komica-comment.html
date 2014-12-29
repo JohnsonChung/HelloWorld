@@ -18,7 +18,7 @@
           <core-item id="core_item" icon="settings" label="Item" class="font-scalable item-small" horizontal layout center></core-item>
         </section>
         <section id="content" one flex>
-          <core-image id="core-image" sizeing="caption" src="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}"></core-image>
+          <core-image id="image" sizeing="caption" src="http://lorempixel.com/{{model.w}}/{{model.h}}/cats/{{model.SWATCHES}}" preload></core-image>
           <komica-paragraph id="p">
               <content></content>
           </komica-paragraph>
@@ -40,8 +40,25 @@
       maxHeight: 480,
       postType: 'default',
       adminMode: false,
+      publish: {
+        onLoad: function() {
+
+        }
+      },
       domReady: function() {
         this.injectBoundHTML(this.model.CONTENT, this.$.p);
+      },
+      ready: function() {
+        var that = this;
+
+        //監控core-image讀取狀態
+        var image = this.$.image
+        var imageObserver = new PathObserver(image, 'loading');
+        imageObserver.open(function() {
+          if(image.loading === false) {
+            that.onLoad();
+          }
+        });
       }
     });
 

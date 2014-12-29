@@ -20,7 +20,7 @@
 
     <core-list id="list" data="{{data}}" fit layout horizontal>
       <template>
-        <komica-comment model="{{model}}"></komica-comment>
+        <komica-comment model="{{model}}" onLoad="{{commentOnLoad}}"></komica-comment>
       </template>
     </core-list>
   </template>
@@ -168,11 +168,18 @@
 
       attr: '',
       ready: function() {
+        this.commentOnLoad = function() {
+          console.log('comment loaded');
+          this.$.list.updateSize();
+        }.bind(this);
       },
       /**
        * This function will be invoked every time `attr` gets changed.
        */
       attrChanged: function() {
+      },
+
+      domReady: function() {
       },
 
       /**
@@ -184,6 +191,7 @@
        */
       task: function(dummy) {
       },
+
       // Polymer Filter Method
       // ERROR 在core-list bender 的時候 filter 沒辦法正確執行 ex: value.toUpperCase(); return nothing
       // fileter 不知道為什麼回傳 10個 undefind 然後才回傳正確的 10 個 value
