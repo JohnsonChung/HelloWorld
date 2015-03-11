@@ -1,23 +1,24 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-image/core-image.html">
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../komica-comment-list/komica-comment-list.html">
+<link rel="import" href="../komica-post/komica-post.html">
 
 
-<polymer-element name="komica-article">
+
+
+</head><body><polymer-element name="komica-article">
   <template>
     <link href="komica-article.css" rel="stylesheet">
 
-    <komica-post>
-      <content></content>
-    </komica-post>
-    <komica-comment-list>
-      <content></content>
-    </komica-comment-list>
+    <div layout vertical fit>
+      <komica-post>
+        <content></content>
+      </komica-post>
+      <komica-comment-list>
+        <content></content>
+      </komica-comment-list>
+    </div>
 
   </template>
 
-  <script>
-    Polymer('komica-article',{
-
-    });
-  </script>
-</polymer-element>
+  <script src="komica-article.html.0.js"></script>
+</polymer-element></body></html>

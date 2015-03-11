@@ -1,5 +1,5 @@
 :host {
-  display: block;
+
 }
 
 :host *,
@@ -21,10 +21,7 @@
   font-size: 20px;
   margin: 0 0 20px 0;
 }
-
-.list {
-  display: block;
-  width: 960px;
+#list {
+  height: 100%;
   overflow: auto;
-  border: 1px solid red;
 }

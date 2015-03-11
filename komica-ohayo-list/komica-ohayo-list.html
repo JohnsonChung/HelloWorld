@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+
+  <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link href="../bower_components/core-animated-pages/core-animated-pages.html" rel="import">
+
+  <style>
+    body {
+      font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+
+  </style>
+
+</head>
+<body unresolved>
+
+  <polymer-element name="komica-ohayo-list">
+  <template>
+
+    <style>
+      .ohayo-list {
+        float: left;
+        margin-right: 45px;
+      }
+      .item {
+        height: 80px;
+        margin-right: -45px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .item img {
+        height: 100%;
+      }
+    </style>
+
+
+    <core-animated-pages id="pages" on-tap="{{reorder}}" selected="{{selected}}" on-core-animated-pages-transition-end="{{done}}" transitions="hero-transition">
+
+      <section>
+        <div class="ohayo-list" layout horizontal reverse>
+          <template repeat="{{items}}">
+            <div hero-id="{{h}}" hero class="item"><img src="{{v}}"></div>
+          </template>
+        </div>
+      </section>
+
+      <section>
+        <div class="ohayo-list" layout horizontal reverse>
+          <template repeat="{{items2}}">
+              <div hero-id="{{h}}" hero class="item"><img src="{{v}}"></div>
+          </template>
+        </div>
+      </section>
+
+    </core-animated-pages>
+
+  </template>
+
+  <script>
+
+    Polymer('komica-ohayo-list', {
+
+      selected: 0,
+
+      items: [
+        {h: 'matt', v: 'faces/01.png'},
+        {h: 'scott', v: 'faces/02.png'},
+        {h: 'steve', v: 'faces/03.png'},
+        {h: 'frankie', v: 'faces/04.png'},
+        {h: 'daniel', v: 'faces/05.png'},
+        {h: 'yvonne', v: 'faces/06.png'},
+      ],
+
+      items2: [
+        {h: 'matt', v: 'faces/01.png'},
+        {h: 'scott', v: 'faces/02.png'},
+        {h: 'steve', v: 'faces/03.png'},
+        {h: 'frankie', v: 'faces/04.png'},
+        {h: 'daniel', v: 'faces/05.png'},
+        {h: 'yvonne', v: 'faces/06.png'},
+      ],
+
+      reorder: function(e) {
+        if (this.$.pages.transitioning.length) {
+          return;
+        }
+
+        this.lastMoved = e.target;
+        this.lastMoved.style.zIndex = 10005;
+        var item = e.target.templateInstance.model;
+        var items = this.selected ? this.items : this.items2;
+        var i = this.selected ? this.items2.indexOf(item) : this.items.indexOf(item);
+        if (i != 0) {
+          items.splice(0, 0, item);
+          items.splice(i + 1, 1);
+        }
+
+        this.lastIndex = i;
+        this.selected = this.selected ? 0 : 1;
+      },
+
+      done: function() {
+        var i = this.lastIndex;
+        var items = this.selected ? this.items : this.items2;
+        var item = items[i];
+        items.splice(0, 0, item);
+        items.splice(i + 1, 1);
+        this.lastMoved.style.zIndex = null;
+      }
+    });
+
+  </script>
+
+  </polymer-element>
+
+  <komica-ohayo-list></komica-ohayo-list>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
+<link rel="import" href="../bower_components/core-field/core-field.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/firebase-element-master/firebase-element.html">
+<link rel="import" href="../komica-article/komica-article.html">
+<polymer-element name="komica-chat">
+
+  <template>
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_pages {
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        background-color: rgb(222, 222, 222);
+      }
+      #content {
+        width: 100%;
+        height: 100%;
+      }
+      #form-input {
+        width: 100%;
+        height: 90px;
+        padding: 16px;
+        display: block;
+        box-sizing: border-box;
+      }
+      #user-article {
+        position: relative;
+      }
+      #admin-article {
+        overflow-y: scroll;
+      }
+      #core_header_panel {
+        width: 300px;
+        height: 400px;
+        left: 1690px;
+        top: 540px;
+      }
+      [floatingLabel] {
+        vertical-align: bottom;
+      }
+
+    </style>
+    <firebase-element id="base" location="https://aoimidori.firebaseio.com/data/" data="{{data}}" keys="{{keys}}" orderByChild="time" log></firebase-element>
+    <core-pages selected="0" selectedindex="0" notap id="core_pages" fit>
+      <section id="page-0" active vertical layout>
+        <div id="content" horizontal layout>
+          <div id="user-article" flex two><komica-article></komica-article></div>
+          <div id="admin-article" flex one>
+            <template repeat="{{key in keys}}">
+              <p>{{data[key].id}}: {{data[key].value}} - {{data[key].time}}<button id="key-{{key}}" datakey="{{key}}" on-tap="{{removekey}}">x</button></p>
+            </template>
+          </div>
+        </div>
+        <div id="form-input" layout horizontal>>
+          <paper-input  id="input-id" committedValue="{{committedID}}" value="{{ID}}"></paper-input>
+          <paper-input  id="input-value" label="發文內容" floatingLabel committedValue="{{committedValue}}" flex></paper-input>
+          <paper-button raised>Button</paper-button>
+        </div>
+      </section>
+      <section id="page-1">Page Two</section>
+    </core-pages>
+  </template>
+
+  <script>
+    Polymer('komica-chat',{
+      ready: function() {
+      },
+      base: new Firebase("https://aoimidori.firebaseio.com/data/"),
+      ID: "#5aAs1!d",
+      committedID: null,
+      committedValue: '',
+      committedValueChanged: function() {
+        var id = this.ID;
+        var text = this.committedValue;
+        var child = this.base;
+        var d = new Date();
+        var time = d.getTime();
+        child.push(
+          {
+            time: time,
+            id:id,
+            value:text
+          });
+      },
+      removekey: function(e) {
+        var key = e.target.getAttribute("datakey");
+        this.$.base.remove(key);
+      }
+    });
+
+  </script>
+
+</polymer-element>

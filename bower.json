@@ -4,6 +4,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#latest",
     "core-elements": "Polymer/core-elements#master",
-    "paper-elements": "Polymer/paper-elements#master"
+    "paper-elements": "Polymer/paper-elements#master",
+    "firebase": "~2.2.2"
   }
 }

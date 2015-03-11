@@ -26,15 +26,6 @@
   line-height: 18px;
   padding: 10px 20px;
 }
-#core-image {
-  min-width: 45px;
-  max-width: 150px;
-  min-height: 45px;
-  max-height: 150px;
-  margin: 10px;
-  float: left;
-  background-color: rgb(180, 180, 180);
-}
 #post {
   display: table;
   margin-bottom: 5px;
@@ -47,4 +38,13 @@
 }
 #checkbox {
   padding: 0 20px;
+}
+komica-image {
+  min-width: 45px;
+  max-width: 150px;
+  min-height: 45px;
+  max-height: 150px;
+  margin: 10px;
+  float: left;
+  background-color: rgb(180, 180, 180);
 }
